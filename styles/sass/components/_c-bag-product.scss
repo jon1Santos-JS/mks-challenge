@@ -1,0 +1,54 @@
+.c-bag-product {
+    align-items: center;
+    flex-direction: row;
+    gap: calc(var(--app-base-measure) * 4);
+    justify-content: space-around;
+    padding: calc(var(--app-base-measure) * 2);
+    position: relative;
+
+    .image {
+        max-height: calc(var(--app-base-measure) * 10);
+        max-width: calc(var(--app-base-measure) * 10);
+    }
+
+    .name {
+        width: 50%;
+    }
+
+    .quantity {
+        .title {
+            font-size: calc(var(--app-base-font-size) / 1.2);
+        }
+
+        .content {
+            align-items: center;
+            display: flex;
+            gap: calc(var(--app-base-measure) / 1.8);
+            justify-content: center;
+            position: relative;
+
+            .add-button {
+                border: 0;
+            }
+
+            .number {
+            }
+
+            .subtract-button {
+                border: 0;
+            }
+        }
+    }
+
+    .price {
+    }
+
+    .exclude-button {
+        border: 0;
+        border-radius: 50%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translate(50%, -50%);
+    }
+}

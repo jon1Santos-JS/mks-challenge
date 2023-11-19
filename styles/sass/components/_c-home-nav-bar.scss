@@ -1,0 +1,32 @@
+.c-home-nav-bar {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: calc(var(--app-base-measure) * 2) calc(var(--app-base-measure) * 8);
+
+    .brand {
+        align-items: center;
+        display: flex;
+        gap: calc(var(--app-base-measure) / 2);
+        justify-content: center;
+
+        .logo {
+            font-size: calc(var(--app-base-font-size) * 2);
+            font-weight: 600;
+        }
+
+        .sub-title {
+            font-size: calc(var(--app-base-font-size) * 1.4);
+        }
+    }
+
+    .bag-button {
+        border: 0;
+        border-radius: var(--app-base-measure);
+        display: flex;
+        font-weight: bold;
+        gap: var(--app-base-measure);
+        padding: calc(var(--app-base-measure) * 1.3)
+            calc(var(--app-base-measure) * 2.2);
+    }
+}

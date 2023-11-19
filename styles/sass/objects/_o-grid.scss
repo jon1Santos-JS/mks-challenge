@@ -1,0 +1,11 @@
+.o-grid {
+    display: grid;
+    grid-gap: calc(var(--app-base-measure) * 3);
+    grid-template-columns: repeat(
+        max(1, 4),
+        minmax(calc(var(--app-base-measure) * 20), 1fr)
+    );
+    min-width: 50%;
+    padding: calc(var(--app-base-measure) * 30)
+        calc(var(--app-base-measure) * 30) 0 calc(var(--app-base-measure) * 30);
+}

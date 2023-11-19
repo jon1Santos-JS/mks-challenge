@@ -1,0 +1,98 @@
+.o-close-modal {
+    bottom: 0;
+    height: 100%;
+    position: fixed;
+    transition: transform 0.4s ease;
+    width: 100%;
+    z-index: var(--modal-index);
+}
+
+.o-bag {
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    min-height: calc(var(--app-base-measure) * 27);
+    position: fixed;
+    right: 0;
+    width: 33%;
+    z-index: var(--modal-index);
+
+    .top-content {
+        display: flex;
+        justify-content: space-between;
+        padding: calc(var(--app-base-measure) * 4)
+            calc(var(--app-base-measure) * 3);
+        position: sticky;
+        top: 0;
+        width: 100%;
+
+        .title {
+            font-size: calc(var(--app-base-font-size) * 1.5);
+            font-weight: bold;
+            position: relative;
+            width: 40%;
+        }
+
+        .exit-button {
+            max-height: 50%;
+            position: relative;
+        }
+    }
+
+    .products {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--app-base-measure) * 4);
+        height: 100%;
+        justify-content: center;
+        overflow-y: auto;
+        padding: calc(var(--app-base-measure) * 4);
+        position: relative;
+    }
+
+    .bottom-content {
+        align-items: center;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: sticky;
+        width: 100%;
+
+        .total {
+            display: flex;
+            font-size: calc(var(--app-base-font-size) * 1.2);
+            font-weight: bold;
+            justify-content: space-between;
+            min-height: calc(var(--app-base-measure) * 6);
+            padding: calc(var(--app-base-measure) * 3)
+                calc(var(--app-base-measure) * 10);
+            position: relative;
+            width: 100%;
+
+            .title {
+                position: relative;
+            }
+
+            .number {
+                position: relative;
+            }
+        }
+
+        .purchase-button {
+            border: 0;
+            font-size: calc(var(--app-base-font-size) * 1.2);
+            font-weight: bold;
+            min-height: calc(var(--app-base-measure) * 10);
+            min-width: calc(var(--app-base-measure) * 10);
+            position: relative;
+            width: 100%;
+        }
+    }
+}
+
+.hide-state {
+    display: none;
+}

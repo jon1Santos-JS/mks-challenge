@@ -6,7 +6,7 @@ import BagProduct from './BagProduct';
 import { motion } from 'framer-motion';
 
 const variants = {
-    open: { opacity: 1, x: 0, transition: { ease: 'linear' } },
+    open: { opacity: 1, x: 0, transition: { ease: 'circOut' } },
     closed: { opacity: 0, x: '100%' },
 };
 
@@ -21,37 +21,40 @@ export default function BagModal() {
             animate={bagState.isOpen ? 'open' : 'closed'}
             variants={variants}
             initial="closed"
-            className="o-bag"
+            className="is-close-modal"
+            onClick={() => bagState.onHandle(false)}
         >
-            <div className="top-content">
-                <div className="title">{BAG_TITLE}</div>
-                <button
-                    className="c-button exit-button"
-                    onClick={() => bagState.onHandle(!bagState.isOpen)}
-                >
-                    x
-                </button>
-            </div>
-            <div className="products-container">
-                <div className="products">
-                    {bagContent.products.map((bagProduct) => (
-                        <BagProduct
-                            key={bagProduct.info.description}
-                            bagProduct={bagProduct}
-                        />
-                    ))}
+            <div onClick={(e) => e.stopPropagation()} className="o-bag">
+                <div className="top-content">
+                    <div className="title">{BAG_TITLE}</div>
+                    <button
+                        className="c-button exit-button"
+                        onClick={() => bagState.onHandle(!bagState.isOpen)}
+                    >
+                        x
+                    </button>
                 </div>
-            </div>
-            <div className="bottom-content">
-                <div className="total">
-                    <div className="title">{TOTAL_TITLE}</div>
-                    <div className="number">
-                        {currencyFormat(bagContent.total, 'BRL')}
+                <div className="products-container">
+                    <div className="products">
+                        {bagContent.products.map((bagProduct) => (
+                            <BagProduct
+                                key={bagProduct.info.description}
+                                bagProduct={bagProduct}
+                            />
+                        ))}
                     </div>
                 </div>
-                <button className="c-button purchase-button">
-                    {BUTTON_TITLE}
-                </button>
+                <div className="bottom-content">
+                    <div className="total">
+                        <div className="title">{TOTAL_TITLE}</div>
+                        <div className="number">
+                            {currencyFormat(bagContent.total, 'BRL')}
+                        </div>
+                    </div>
+                    <button className="c-button purchase-button">
+                        {BUTTON_TITLE}
+                    </button>
+                </div>
             </div>
         </motion.div>
     );

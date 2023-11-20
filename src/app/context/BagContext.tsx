@@ -52,7 +52,7 @@ export function BagProvider({ children }: BagProvider) {
         addProduct: (info: ProductInfo) =>
             setBagContent((prev) => {
                 const prod = prev.products.find(
-                    (bagProduct) => bagProduct.info === info,
+                    (bagProduct) => bagProduct.info.id === info.id,
                 );
                 if (!prod) {
                     return {
@@ -63,7 +63,7 @@ export function BagProvider({ children }: BagProvider) {
                     };
                 }
                 const newProducts = prev.products.map((bagProduct) =>
-                    bagProduct.info === info
+                    bagProduct.info.id === info.id
                         ? { ...bagProduct, qt: bagProduct.qt++ }
                         : bagProduct,
                 );
@@ -77,14 +77,14 @@ export function BagProvider({ children }: BagProvider) {
         subProduct: (info: ProductInfo) =>
             setBagContent((prev) => {
                 const prod = prev.products.find(
-                    (bagProduct) => bagProduct.info === info,
+                    (bagProduct) => bagProduct.info.id === info.id,
                 );
                 if (!prod) {
                     return prev;
                 }
                 if (prod.qt === 0) {
                     const newProducts = prev.products.filter(
-                        (bagProduct) => bagProduct.info !== info,
+                        (bagProduct) => bagProduct.info.id !== info.id,
                     );
                     return {
                         ...prev,
@@ -94,7 +94,7 @@ export function BagProvider({ children }: BagProvider) {
                     };
                 }
                 const newProducts = prev.products.map((bagProduct) =>
-                    bagProduct.info === info
+                    bagProduct.info.id === info.id
                         ? { ...bagProduct, qt: bagProduct.qt-- }
                         : bagProduct,
                 );
@@ -108,10 +108,10 @@ export function BagProvider({ children }: BagProvider) {
         excludeProduct: (info: ProductInfo) =>
             setBagContent((prev) => {
                 const prod = prev.products.find(
-                    (bagProduct) => bagProduct.info === info,
+                    (bagProduct) => bagProduct.info.id === info.id,
                 );
                 const newProducts = prev.products.filter(
-                    (bagProduct) => bagProduct.info !== info,
+                    (bagProduct) => bagProduct.info.id !== info.id,
                 );
                 if (prod) {
                     const isZero = prod.qt === 0 ? 1 : prod.qt;

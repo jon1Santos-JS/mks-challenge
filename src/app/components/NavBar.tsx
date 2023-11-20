@@ -22,6 +22,7 @@ export default function NavBar() {
                 <Image
                     src={ShoppingCartImage}
                     alt={SHOPPING_CART_DESCRIPTION}
+                    className="image"
                 />
                 <div className="total-items">{bagContent.totalItems}</div>
             </button>

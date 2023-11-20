@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { useBag } from '../context/BagContext';
 import ShoppingBagImage from '../../../public/shoppingBagImage.svg';
@@ -5,6 +7,17 @@ import useString from '../hooks/useString';
 
 type UniqueProduct = {
     productInfo: ProductInfo;
+};
+import { motion } from 'framer-motion';
+
+const purchaseImageVariants = {
+    hover: { scale: 0.11, x: '-2%' },
+    tap: { scale: 0.1, x: '2%' },
+};
+
+const purchaseTitleVariants = {
+    hover: { scale: 1.1, x: '-98%' },
+    tap: { scale: 0.9, x: '-101%' },
 };
 
 export default function Product({ productInfo }: UniqueProduct) {
@@ -36,18 +49,30 @@ export default function Product({ productInfo }: UniqueProduct) {
                     {toAddDots(toTrimString(productInfo.description, 10))}
                 </div>
             </div>
-            <button
+            <motion.button
                 onClick={() => bagContent.addProduct(productInfo)}
+                whileHover="hover"
+                whileTap="tap"
                 className="c-button purchase-button"
             >
-                <div className="image">
+                <motion.div
+                    className="image"
+                    initial={{ scale: 0.1 }}
+                    variants={purchaseImageVariants}
+                >
                     <Image
                         src={ShoppingBagImage}
                         alt={SHOPPING_BAG_IMAGE_DESCRIPTION}
                     ></Image>
-                </div>
-                <div className="title">{PURCHASE_WORD}</div>
-            </button>
+                </motion.div>
+                <motion.div
+                    className="title"
+                    initial={{ x: '-100%' }}
+                    variants={purchaseTitleVariants}
+                >
+                    {PURCHASE_WORD}
+                </motion.div>
+            </motion.button>
         </div>
     );
 }

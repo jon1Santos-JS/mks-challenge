@@ -1,0 +1,7 @@
+.is-close-modal {
+    bottom: 0;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: var(--modal-index);
+}

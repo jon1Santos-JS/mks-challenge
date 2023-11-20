@@ -1,6 +1,7 @@
-import { BagProduct, useBag } from '../context/BagContext';
+import { BagProduct, useBag } from '../../context/BagContext';
 import Image from 'next/image';
-import useString from '../hooks/useString';
+import { motion } from 'framer-motion';
+import useString from '@/hooks/useString';
 
 type BagProductContent = {
     bagProduct: BagProduct;
@@ -11,7 +12,14 @@ export default function BagProduct({ bagProduct }: BagProductContent) {
     const { bagContent } = useBag();
     const { currencyFormat } = useString();
     return (
-        <div className="c-bag-product c-card">
+        <motion.div
+            key={bagProduct.info.id}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{ delay: 0.1 }}
+            className="c-bag-product c-card"
+        >
             <div className="image">
                 <Image
                     src={bagProduct.info.photo}
@@ -49,12 +57,15 @@ export default function BagProduct({ bagProduct }: BagProductContent) {
             <div className="price">
                 {currencyFormat(bagProduct.info.price, 'BRL')}
             </div>
-            <button
+            <motion.button
+                whileHover={{ scale: 0.84, x: '50%', y: '-50%' }}
+                initial={{ scale: 0.8, x: '50%', y: '-50%' }}
+                whileTap={{ scale: 0.76, x: '50%', y: '-50%' }}
                 className="c-button exclude-button "
                 onClick={() => bagContent.excludeProduct(bagProduct.info)}
             >
                 x
-            </button>
-        </div>
+            </motion.button>
+        </motion.div>
     );
 }

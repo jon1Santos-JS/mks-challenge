@@ -64,14 +64,14 @@ export function BagProvider({ children }: BagProvider) {
                 }
                 const newProducts = prev.products.map((bagProduct) =>
                     bagProduct.info.id === info.id
-                        ? { ...bagProduct, qt: bagProduct.qt++ }
+                        ? { ...bagProduct, qt: bagProduct.qt + 1 }
                         : bagProduct,
                 );
                 return {
                     ...prev,
                     products: newProducts,
                     total: prev.total + Number(info.price),
-                    totalItems: prev.totalItems++,
+                    totalItems: prev.totalItems + 1,
                 };
             }),
         subProduct: (info: ProductInfo) =>
@@ -82,7 +82,7 @@ export function BagProvider({ children }: BagProvider) {
                 if (!prod) {
                     return prev;
                 }
-                if (prod.qt === 0) {
+                if (prod.qt === 1) {
                     const newProducts = prev.products.filter(
                         (bagProduct) => bagProduct.info.id !== info.id,
                     );
@@ -90,19 +90,19 @@ export function BagProvider({ children }: BagProvider) {
                         ...prev,
                         products: newProducts,
                         total: prev.total - Number(info.price),
-                        totalItems: prev.totalItems--,
+                        totalItems: prev.totalItems + 1,
                     };
                 }
                 const newProducts = prev.products.map((bagProduct) =>
                     bagProduct.info.id === info.id
-                        ? { ...bagProduct, qt: bagProduct.qt-- }
+                        ? { ...bagProduct, qt: bagProduct.qt - 1 }
                         : bagProduct,
                 );
                 return {
                     ...prev,
                     products: newProducts,
                     total: prev.total - Number(info.price),
-                    totalItems: prev.totalItems--,
+                    totalItems: prev.totalItems - 1,
                 };
             }),
         excludeProduct: (info: ProductInfo) =>
@@ -114,15 +114,11 @@ export function BagProvider({ children }: BagProvider) {
                     (bagProduct) => bagProduct.info.id !== info.id,
                 );
                 if (prod) {
-                    const isZero = prod.qt === 0 ? 1 : prod.qt;
+                    const prodTotalPrice = Number(prod.info.price) * prod.qt;
                     const newTotal = prod
-                        ? prev.total - Number(prod.info.price) * isZero
+                        ? prev.total - prodTotalPrice
                         : prev.total;
-
-                    const newTotalItems =
-                        prod.qt === 0
-                            ? prev.totalItems--
-                            : prev.totalItems - Number(prod.qt);
+                    const newTotalItems = prev.totalItems - Number(prod.qt);
                     return {
                         ...prev,
                         products: newProducts,

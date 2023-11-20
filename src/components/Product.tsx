@@ -2,13 +2,16 @@
 
 import Image from 'next/image';
 import { useBag } from '../context/BagContext';
-import ShoppingBagImage from '../../../public/shoppingBagImage.svg';
-import useString from '../hooks/useString';
+import ShoppingBagImage from '../../public/ShoppingBagImage.svg';
+import Skeleton from '@mui/material/Skeleton';
 
 type UniqueProduct = {
     productInfo: ProductInfo;
+    isLoading?: boolean;
+    isFetching?: boolean;
 };
 import { motion } from 'framer-motion';
+import useString from '@/hooks/useString';
 
 const purchaseImageVariants = {
     hover: { scale: 0.11, x: '-2%' },
@@ -20,11 +23,45 @@ const purchaseTitleVariants = {
     tap: { scale: 0.9, x: '-101%' },
 };
 
-export default function Product({ productInfo }: UniqueProduct) {
+export default function Product({ productInfo, isFetching }: UniqueProduct) {
     const PURCHASE_WORD = 'COMPRAR';
     const SHOPPING_BAG_IMAGE_DESCRIPTION = 'Shopping bag image from button';
     const { bagContent } = useBag();
     const { currencyFormat, toAddDots, toTrimString } = useString();
+
+    if (isFetching)
+        return (
+            <div className="c-card c-product">
+                <div className="image">
+                    <Skeleton width={200} height={150}></Skeleton>
+                </div>
+                <div className="info-content">
+                    <div className="name-price-content">
+                        <Skeleton
+                            variant="text"
+                            width={100}
+                            sx={{ fontSize: '2rem' }}
+                        ></Skeleton>
+                        <Skeleton
+                            width={100}
+                            variant="text"
+                            sx={{ fontSize: '1.5rem' }}
+                        ></Skeleton>
+                    </div>
+                    <div className="description">
+                        <Skeleton
+                            width={200}
+                            variant="text"
+                            sx={{ fontSize: '2.5rem' }}
+                        ></Skeleton>
+                    </div>
+                </div>
+                <button className=" purchase-button">
+                    <Skeleton width={240} height={30}></Skeleton>
+                </button>
+            </div>
+        );
+
     return (
         <div className="c-card c-product">
             <div className="image">
@@ -53,7 +90,7 @@ export default function Product({ productInfo }: UniqueProduct) {
                 onClick={() => bagContent.addProduct(productInfo)}
                 whileHover="hover"
                 whileTap="tap"
-                className="c-button purchase-button"
+                className="c-button purchase-button purchase-button--secondary"
             >
                 <motion.div
                     className="image"

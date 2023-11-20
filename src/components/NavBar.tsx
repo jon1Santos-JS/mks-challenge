@@ -1,7 +1,7 @@
 'use client';
 
 import { useBag } from '../context/BagContext';
-import ShoppingCartImage from '../../../public/ShoppingCartImage.svg';
+import ShoppingCartImage from '../../public/ShoppingCartImage.svg';
 import Image from 'next/image';
 
 export default function NavBar() {

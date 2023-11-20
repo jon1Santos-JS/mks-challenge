@@ -54,10 +54,8 @@
 
     .purchase-button {
         align-items: center;
-        background-color: var(--secondary-color);
         border: 0;
         border-radius: 0 0 var(--app-base-measure) var(--app-base-measure);
-        color: var(--primary-color);
         display: flex;
         font-size: calc(var(--app-base-font-size) / 1.1);
         font-weight: bolder;
@@ -74,6 +72,11 @@
         .title {
             position: relative;
             transform: translate(-100%, 0%);
+        }
+
+        &--secondary {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
         }
     }
 }

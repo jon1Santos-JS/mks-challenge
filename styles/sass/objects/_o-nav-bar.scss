@@ -2,6 +2,7 @@
     background-color: var(--secondary-color);
     height: calc(var(--app-base-measure) * 10);
     position: fixed;
+    right: 0;
     top: 0;
     width: 100%;
     z-index: var(--navigation-index);

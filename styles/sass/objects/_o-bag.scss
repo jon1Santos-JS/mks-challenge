@@ -53,8 +53,9 @@
     .products-container {
         color: var(--black-color);
         height: 100%;
-        overflow-y: auto;
+        overflow: hidden auto;
         position: relative;
+        scroll-margin: 2px;
 
         .products {
             align-items: center;

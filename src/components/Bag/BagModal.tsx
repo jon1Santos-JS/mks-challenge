@@ -1,12 +1,12 @@
 'use client';
 
-import { useBag } from '../context/BagContext';
-import useString from '../hooks/useString';
+import useString from '@/hooks/useString';
+import { useBag } from '../../context/BagContext';
 import BagProduct from './BagProduct';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const variants = {
-    open: { opacity: 1, x: 0, transition: { ease: 'circOut' } },
+    open: { opacity: 1, x: '1%', transition: { ease: 'circOut' } },
     closed: { opacity: 0, x: '100%' },
 };
 
@@ -36,12 +36,14 @@ export default function BagModal() {
                 </div>
                 <div className="products-container">
                     <div className="products">
-                        {bagContent.products.map((bagProduct) => (
-                            <BagProduct
-                                key={bagProduct.info.description}
-                                bagProduct={bagProduct}
-                            />
-                        ))}
+                        <AnimatePresence>
+                            {bagContent.products.map((bagProduct) => (
+                                <BagProduct
+                                    key={bagProduct.info.id}
+                                    bagProduct={bagProduct}
+                                />
+                            ))}
+                        </AnimatePresence>
                     </div>
                 </div>
                 <div className="bottom-content">

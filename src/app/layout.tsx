@@ -1,4 +1,4 @@
-import Providers from './components/Providers';
+import Providers from '../components/Providers';
 import '../../styles/sass/index.scss';
 import { Montserrat } from 'next/font/google';
 

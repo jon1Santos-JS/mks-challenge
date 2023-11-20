@@ -16,7 +16,7 @@ export default function NavBar() {
                 <span className="sub-title">{SUB_TITLE}</span>
             </div>
             <button
-                className="bag-button"
+                className="c-button bag-button"
                 onClick={() => bagState.onHandle(!bagState.isOpen)}
             >
                 <Image

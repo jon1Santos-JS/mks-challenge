@@ -1,8 +1,11 @@
 .o-page {
     align-items: center;
+    background-color: var(--bg-page-color);
     display: flex;
     flex-direction: column;
+    font-size: var(--app-base-font-size);
     gap: calc(var(--app-base-measure) * 15);
     height: 100vh;
     justify-content: space-between;
+    overflow: hidden auto;
 }

@@ -1,14 +1,6 @@
-.o-close-modal {
-    bottom: 0;
-    height: 100%;
-    position: fixed;
-    transition: transform 0.4s ease;
-    width: 100%;
-    z-index: var(--modal-index);
-}
-
 .o-bag {
     background-color: var(--secondary-color);
+    color: var(--primary-color);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -19,11 +11,20 @@
     width: 33%;
     z-index: var(--modal-index);
 
+    @media screen and (width <= 1240px) {
+        width: 60%;
+    }
+
+    @media screen and (width <= 768px) {
+        width: 100%;
+    }
+
     .top-content {
         display: flex;
         justify-content: space-between;
+        max-height: calc(var(--app-base-measure) * 20);
         padding: calc(var(--app-base-measure) * 4)
-            calc(var(--app-base-measure) * 4);
+            calc(var(--app-base-measure) * 6);
         position: sticky;
         top: 0;
         width: 100%;
@@ -36,22 +37,35 @@
         }
 
         .exit-button {
+            background-color: var(--black-color);
             border: 0;
             border-radius: 50%;
-            max-height: 40%;
-            position: relative;
+            color: inherit;
+            min-height: calc(var(--app-base-measure) * 4);
+            min-width: calc(var(--app-base-measure) * 4);
+            position: absolute;
+            right: 10%;
+            top: 40%;
+            transform: translate(50%, -50%);
         }
     }
 
-    .products {
-        display: flex;
-        flex-direction: column;
-        gap: calc(var(--app-base-measure) * 4);
+    .products-container {
+        color: var(--black-color);
         height: 100%;
-        justify-content: center;
         overflow-y: auto;
-        padding: calc(var(--app-base-measure) * 4);
         position: relative;
+
+        .products {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--app-base-measure) * 4);
+            height: 100%;
+            justify-content: flex-start;
+            padding: calc(var(--app-base-measure) * 4)
+                calc(var(--app-base-measure) * 6);
+        }
     }
 
     .bottom-content {
@@ -70,7 +84,7 @@
             justify-content: space-between;
             min-height: calc(var(--app-base-measure) * 6);
             padding: calc(var(--app-base-measure) * 3)
-                calc(var(--app-base-measure) * 10);
+                calc(var(--app-base-measure) * 6);
             position: relative;
             width: 100%;
 
@@ -84,7 +98,9 @@
         }
 
         .purchase-button {
+            background-color: var(--black-color);
             border: 0;
+            color: inherit;
             font-size: calc(var(--app-base-font-size) * 1.2);
             font-weight: bold;
             min-height: calc(var(--app-base-measure) * 10);

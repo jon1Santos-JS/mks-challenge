@@ -3,9 +3,11 @@
     display: flex;
     justify-content: space-between;
     padding: calc(var(--app-base-measure) * 2) calc(var(--app-base-measure) * 8);
+    width: 100%;
 
     .brand {
         align-items: center;
+        color: var(--primary-color);
         display: flex;
         gap: calc(var(--app-base-measure) / 2);
         justify-content: center;

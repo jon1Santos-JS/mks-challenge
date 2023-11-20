@@ -1,0 +1,24 @@
+.c-grid {
+    display: grid;
+    grid-gap: calc(var(--app-base-measure) * 14);
+    grid-template-columns: repeat(
+        4,
+        minmax(calc(var(--app-base-measure) * 20), 1fr)
+    );
+    place-items: center;
+    width: 100%;
+
+    @media screen and (width <= 1240px) {
+        grid-template-columns: repeat(
+            2,
+            minmax(calc(var(--app-base-measure) * 20), 1fr)
+        );
+    }
+
+    @media screen and (width <= 768px) {
+        grid-template-columns: repeat(
+            auto-fit,
+            minmax(calc(var(--app-base-measure) * 20), 1fr)
+        );
+    }
+}

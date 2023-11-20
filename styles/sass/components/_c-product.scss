@@ -1,8 +1,7 @@
 .c-product {
     gap: calc(var(--app-base-measure) * 2);
-    max-width: calc(var(--app-base-measure) * 30);
-    min-height: calc(var(--app-base-measure) * 35);
-    min-width: calc(var(--app-base-measure) * 27);
+    height: 100%;
+    min-width: calc(var(--app-base-measure) * 30);
     padding-bottom: 0;
     position: relative;
 
@@ -22,33 +21,46 @@
         display: flex;
         flex-direction: column;
         gap: var(--app-base-measure);
-        padding: calc(var(--app-base-measure) * 2);
+        padding: calc(var(--app-base-measure) * 2)
+            calc(var(--app-base-measure) * 2) 0
+            calc(var(--app-base-measure) * 2);
 
         .name-price-content {
+            align-items: center;
             display: flex;
             justify-content: space-between;
 
             .name {
+                font-weight: 600;
                 position: relative;
             }
 
             .price {
-                font-weight: bold;
-                padding: calc(var(--app-base-measure));
+                background-color: var(--gray-color);
+                border-radius: calc(var(--app-base-measure) / 2);
+                color: var(--primary-color);
+                font-weight: bolder;
+                padding: calc(var(--app-base-measure) / 1.5)
+                    var(--app-base-measure);
                 position: relative;
             }
         }
 
         .description {
             font-size: calc(var(--app-base-font-size) / 1.2);
+            font-weight: lighter;
         }
     }
 
     .purchase-button {
         align-items: center;
+        background-color: var(--secondary-color);
         border: 0;
         border-radius: 0 0 var(--app-base-measure) var(--app-base-measure);
+        color: var(--primary-color);
         display: flex;
+        font-size: calc(var(--app-base-font-size) / 1.1);
+        font-weight: bolder;
         gap: calc(var(--app-base-measure));
         max-height: calc(var(--app-base-measure) * 4);
         width: 100%;
@@ -56,12 +68,12 @@
         .image {
             max-height: calc(var(--app-base-measure) * 2);
             position: relative;
-            transform: scale(10%) translate(-110%, 0%);
+            transform: scale(10%) translate(-100%, 0%);
         }
 
         .title {
             position: relative;
-            transform: translate(-110%, 0%);
+            transform: translate(-100%, 0%);
         }
     }
 }

@@ -1,5 +1,6 @@
 import { BagProduct, useBag } from '../context/BagContext';
 import Image from 'next/image';
+import useString from '../hooks/useString';
 
 type BagProductContent = {
     bagProduct: BagProduct;
@@ -8,6 +9,7 @@ type BagProductContent = {
 export default function BagProduct({ bagProduct }: BagProductContent) {
     const QUANTITY_TITLE = 'Qtd:';
     const { bagContent } = useBag();
+    const { currencyFormat } = useString();
     return (
         <div className="c-bag-product c-card">
             <div className="image">
@@ -27,26 +29,28 @@ export default function BagProduct({ bagProduct }: BagProductContent) {
                 <div className="content">
                     <button
                         onClick={() => {
-                            bagContent.addProduct(bagProduct.info);
+                            bagContent.subProduct(bagProduct.info);
                         }}
-                        className="add-button"
+                        className="c-button subtract-button"
                     >
-                        +
+                        -
                     </button>
                     <div className="number">{bagProduct.qt}</div>
                     <button
                         onClick={() => {
-                            bagContent.subProduct(bagProduct.info);
+                            bagContent.addProduct(bagProduct.info);
                         }}
-                        className="subtract-button"
+                        className="c-button add-button"
                     >
-                        -
+                        +
                     </button>
                 </div>
             </div>
-            <div className="price">{bagProduct.info.price}</div>
+            <div className="price">
+                {currencyFormat(bagProduct.info.price, 'BRL')}
+            </div>
             <button
-                className="exclude-button"
+                className="c-button exclude-button "
                 onClick={() => bagContent.excludeProduct(bagProduct.info)}
             >
                 x

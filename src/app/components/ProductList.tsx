@@ -15,10 +15,12 @@ export default function ProductList(props: Products) {
         initialData: props.products,
     });
     return (
-        <section className="o-grid">
-            {data.map((product) => (
-                <Product key={product.id} productInfo={product} />
-            ))}
-        </section>
+        <div className="c-product-list">
+            <section className="c-grid">
+                {data.map((product) => (
+                    <Product key={product.id} productInfo={product} />
+                ))}
+            </section>
+        </div>
     );
 }

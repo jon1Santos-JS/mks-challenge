@@ -11,7 +11,7 @@ export default async function Home() {
     const products = await getPosts();
 
     return (
-        <main className="o-page s-page">
+        <main className="o-page">
             <BagProvider>
                 <NavBar />
                 <ProductList products={products} />

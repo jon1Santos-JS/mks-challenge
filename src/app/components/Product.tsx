@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useBag } from '../context/BagContext';
 import ShoppingBagImage from '../../../public/shoppingBagImage.svg';
+import useString from '../hooks/useString';
 
 type UniqueProduct = {
     productInfo: ProductInfo;
@@ -10,6 +11,7 @@ export default function Product({ productInfo }: UniqueProduct) {
     const PURCHASE_WORD = 'COMPRAR';
     const SHOPPING_BAG_IMAGE_DESCRIPTION = 'Shopping bag image from button';
     const { bagContent } = useBag();
+    const { currencyFormat, toAddDots, toTrimString } = useString();
     return (
         <div className="c-card c-product">
             <div className="image">
@@ -27,14 +29,16 @@ export default function Product({ productInfo }: UniqueProduct) {
                 <div className="name-price-content">
                     <div className="name">{productInfo.name}</div>
                     <div className="price price-primary">
-                        {productInfo.price}
+                        {currencyFormat(productInfo.price, 'BRL')}
                     </div>
                 </div>
-                <div className="description">{productInfo.description}</div>
+                <div className="description">
+                    {toAddDots(toTrimString(productInfo.description, 10))}
+                </div>
             </div>
-            <div
+            <button
                 onClick={() => bagContent.addProduct(productInfo)}
-                className="purchase-button"
+                className="c-button purchase-button"
             >
                 <div className="image">
                     <Image
@@ -43,7 +47,7 @@ export default function Product({ productInfo }: UniqueProduct) {
                     ></Image>
                 </div>
                 <div className="title">{PURCHASE_WORD}</div>
-            </div>
+            </button>
         </div>
     );
 }

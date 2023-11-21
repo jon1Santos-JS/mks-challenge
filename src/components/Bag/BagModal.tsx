@@ -6,7 +6,7 @@ import BagProduct from './BagProduct';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const variants = {
-    open: { opacity: 1, x: '1%', transition: { ease: 'circOut' } },
+    open: { opacity: 1, x: 0, transition: { ease: 'circOut' } },
     closed: { opacity: 0, x: '100%' },
 };
 

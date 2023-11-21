@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# simple-website-template
 
-## Getting Started
+<hr>
 
-First, run the development server:
+[<img target=_blank height="50px" src="https://media0.giphy.com/media/5ABGt7KDXJ62zg7oI0/giphy.gif?cid=790b761123aba84c737efe59273d3d75b3dbaef458bf13a4&rid=giphy.gif&ct=s" />](https://mks-challenge-eight.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+#
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Built With
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* Next.js
+* Sass
+* Typescript
+* React
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#
 
-## Learn More
+### Api Reference
 
-To learn more about Next.js, take a look at the following resources:
+* mks-frontend-challenge - to request product list - https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api-docs/
+* material ui: to create 'shimmer/skeleton' - https://mui.com/material-ui/react-skeleton/
+* react-query: to request, handle and reuse data - https://tanstack.com/query/v4/docs/react/quick-start
+* framer motion: to handle elements on interface - https://www.framer.com/motion/
+* jest/reac-library: to test Shopping Bag features - https://jestjs.io/docs/getting-started
+  
+#
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Skilled
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Typescript
 
-## Deploy on Vercel
+* Local Storage: to store the users Shopping Bag state on browser
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### React
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* UseContext: to handle Shopping Bag content/state
+
+#### NextJs
+
+* App Folder: to become accustomed to handle it
+
+#### Sass
+
+* Itcss: to ensure css priority cascade
+* BEM: to sort things out
+

@@ -1,7 +1,8 @@
-.c-button {
-    border: 0;
-    cursor: pointer;
-    user-select: none;
+.c-text {
+    &--gray {
+        background-color: var(--gray-color);
+        color: var(--primary-color);
+    }
 
     &--secondary {
         background-color: var(--secondary-color);

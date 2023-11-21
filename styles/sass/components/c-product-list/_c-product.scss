@@ -36,9 +36,7 @@
             }
 
             .price {
-                background-color: var(--gray-color);
                 border-radius: calc(var(--app-base-measure) / 2);
-                color: var(--primary-color);
                 font-weight: bolder;
                 padding: calc(var(--app-base-measure) / 1.5)
                     var(--app-base-measure);
@@ -72,11 +70,6 @@
         .title {
             position: relative;
             transform: translate(-100%, 0%);
-        }
-
-        &--secondary {
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
         }
     }
 }

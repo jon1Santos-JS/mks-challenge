@@ -1,5 +1,12 @@
 'use client';
-import { ReactNode, useContext, useState, createContext } from 'react';
+import {
+    ReactNode,
+    useContext,
+    useState,
+    createContext,
+    useEffect,
+    useRef,
+} from 'react';
 
 type BagContextType = {
     bagContent: BagContent;
@@ -45,6 +52,11 @@ type BagProvider = {
 };
 
 export function BagProvider({ children }: BagProvider) {
+    const [bagState, setBagState] = useState({
+        isOpen: false,
+        onHandle: (value: boolean) =>
+            setBagState((prev) => ({ ...prev, isOpen: value })),
+    });
     const [bagContent, setBagContent] = useState({
         products: [] as BagProduct[],
         total: 0,
@@ -90,7 +102,7 @@ export function BagProvider({ children }: BagProvider) {
                         ...prev,
                         products: newProducts,
                         total: prev.total - Number(info.price),
-                        totalItems: prev.totalItems + 1,
+                        totalItems: prev.totalItems - 1,
                     };
                 }
                 const newProducts = prev.products.map((bagProduct) =>
@@ -132,11 +144,26 @@ export function BagProvider({ children }: BagProvider) {
                 };
             }),
     });
-    const [bagState, setBagState] = useState({
-        isOpen: false,
-        onHandle: (value: boolean) =>
-            setBagState((prev) => ({ ...prev, isOpen: value })),
-    });
+    const initialContent = useRef(bagContent);
+
+    useEffect(() => {
+        const response = localStorage.getItem('bagstate');
+        if (!response) return;
+        const bag = JSON.parse(response) as BagContent;
+        setBagContent((prev) => ({
+            ...prev,
+            total: bag.total,
+            totalItems: bag.totalItems,
+            products: bag.products,
+        }));
+    }, []);
+
+    useEffect(() => {
+        if (initialContent.current !== bagContent) {
+            const stringifiedState = JSON.stringify(bagContent);
+            localStorage.setItem('bagstate', stringifiedState);
+        }
+    }, [bagContent]);
 
     return (
         <BagContext.Provider value={{ bagContent, bagState }}>

@@ -23,15 +23,19 @@ const purchaseTitleVariants = {
     tap: { scale: 0.9, x: '-101%' },
 };
 
-export default function Product({ productInfo, isFetching }: UniqueProduct) {
+export default function Product({
+    productInfo,
+    isFetching,
+    isLoading,
+}: UniqueProduct) {
     const PURCHASE_WORD = 'COMPRAR';
     const SHOPPING_BAG_IMAGE_DESCRIPTION = 'Shopping bag image from button';
     const { bagContent } = useBag();
     const { currencyFormat, toAddDots, toTrimString } = useString();
 
-    if (isFetching)
+    if (isFetching || isLoading)
         return (
-            <div className="c-card c-product">
+            <div className="c-card c-product ">
                 <div className="image">
                     <Skeleton width={200} height={150}></Skeleton>
                 </div>
@@ -69,6 +73,7 @@ export default function Product({ productInfo, isFetching }: UniqueProduct) {
                     src={productInfo.photo}
                     width={200}
                     height={200}
+                    priority
                     alt={productInfo.description}
                     sizes="(max-width: 768px) 100vw,
                         (max-width: 1200px) 50vw,
@@ -78,7 +83,7 @@ export default function Product({ productInfo, isFetching }: UniqueProduct) {
             <div className="info-content">
                 <div className="name-price-content">
                     <div className="name">{productInfo.name}</div>
-                    <div className="price price-primary">
+                    <div className="price price-primary c-text--gray">
                         {currencyFormat(productInfo.price, 'BRL')}
                     </div>
                 </div>
@@ -90,7 +95,7 @@ export default function Product({ productInfo, isFetching }: UniqueProduct) {
                 onClick={() => bagContent.addProduct(productInfo)}
                 whileHover="hover"
                 whileTap="tap"
-                className="c-button purchase-button purchase-button--secondary"
+                className="c-button c-button--secondary purchase-button"
             >
                 <motion.div
                     className="image"

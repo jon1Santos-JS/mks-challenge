@@ -18,7 +18,7 @@ export default function BagProduct({ bagProduct }: BagProductContent) {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             transition={{ delay: 0.1 }}
-            className="c-bag-product c-card"
+            className="c-card c-bag-product c-card--primary"
         >
             <div className="image">
                 <Image
@@ -61,7 +61,7 @@ export default function BagProduct({ bagProduct }: BagProductContent) {
                 whileHover={{ scale: 0.84, x: '50%', y: '-50%' }}
                 initial={{ scale: 0.8, x: '50%', y: '-50%' }}
                 whileTap={{ scale: 0.76, x: '50%', y: '-50%' }}
-                className="c-button exclude-button "
+                className="c-button exit-button button--black"
                 onClick={() => bagContent.excludeProduct(bagProduct.info)}
             >
                 x

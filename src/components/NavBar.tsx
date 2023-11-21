@@ -10,7 +10,7 @@ export default function NavBar() {
     const SHOPPING_CART_DESCRIPTION = 'Shopping cart image button';
     const { bagState, bagContent } = useBag();
     return (
-        <nav className="o-nav-bar c-home-nav-bar">
+        <nav className="o-nav-bar c-home-nav-bar c-text--secondary">
             <div className="brand">
                 <span className="logo">{LOGO_NAME}</span>
                 <span className="sub-title">{SUB_TITLE}</span>

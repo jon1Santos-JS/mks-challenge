@@ -21,14 +21,17 @@ export default function BagModal() {
             animate={bagState.isOpen ? 'open' : 'closed'}
             variants={variants}
             initial="closed"
-            className="is-close-modal"
+            className="is-close-modal "
             onClick={() => bagState.onHandle(false)}
         >
-            <div onClick={(e) => e.stopPropagation()} className="o-bag">
+            <div
+                onClick={(e) => e.stopPropagation()}
+                className="o-modal c-bag c-bag--secondary "
+            >
                 <div className="top-content">
                     <div className="title">{BAG_TITLE}</div>
                     <button
-                        className="c-button exit-button"
+                        className="c-button exit-button button--black"
                         onClick={() => bagState.onHandle(!bagState.isOpen)}
                     >
                         x
@@ -53,7 +56,7 @@ export default function BagModal() {
                             {currencyFormat(bagContent.total, 'BRL')}
                         </div>
                     </div>
-                    <button className="c-button purchase-button">
+                    <button className="c-button purchase-button button--black">
                         {BUTTON_TITLE}
                     </button>
                 </div>

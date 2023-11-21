@@ -12,7 +12,7 @@ import '@testing-library/jest-dom';
 
 const qtProductsToList = 6;
 
-const totalItems = 0;
+const totalBagProducts = 0;
 
 test('Bag test', () => {
     const { getByTestId } = render(
@@ -25,7 +25,9 @@ test('Bag test', () => {
     addToBag(getByTestId, 2, 7);
     subFromBag(getByTestId, 2, 2);
     delFromBag(getByTestId, 2);
-    expect(getByTestId('total-items')).toHaveTextContent(totalItems.toString());
+    expect(getByTestId('total-items')).toHaveTextContent(
+        totalBagProducts.toString(),
+    );
 });
 
 function addToBag(

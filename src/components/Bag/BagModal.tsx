@@ -6,7 +6,7 @@ import BagProduct from './BagProduct';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const variants = {
-    open: { opacity: 1, x: 0, transition: { ease: 'circOut' } },
+    open: { opacity: 1, x: '1%', transition: { ease: 'circOut' } },
     closed: { opacity: 0, x: '100%' },
 };
 
@@ -26,12 +26,12 @@ export default function BagModal() {
         >
             <div
                 onClick={(e) => e.stopPropagation()}
-                className="o-modal c-bag c-bag--secondary "
+                className="o-modal c-bag c-text--secondary "
             >
                 <div className="top-content">
                     <div className="title">{BAG_TITLE}</div>
                     <button
-                        className="c-button exit-button button--black"
+                        className="c-button c-button--black exit-button "
                         onClick={() => bagState.onHandle(!bagState.isOpen)}
                     >
                         x
@@ -56,7 +56,7 @@ export default function BagModal() {
                             {currencyFormat(bagContent.total, 'BRL')}
                         </div>
                     </div>
-                    <button className="c-button purchase-button button--black">
+                    <button className="c-button c-button--black purchase-button ">
                         {BUTTON_TITLE}
                     </button>
                 </div>

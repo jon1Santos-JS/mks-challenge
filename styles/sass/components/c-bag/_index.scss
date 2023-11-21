@@ -8,19 +8,8 @@
     }
 
     @media screen and (width <= 768px) {
+        transform: translateX(-1%);
         width: 100%;
-    }
-
-    &--secondary {
-        background-color: var(--secondary-color);
-        color: var(--primary-color);
-    }
-
-    .button {
-        &--black {
-            background-color: var(--black-color);
-            color: var(--primary-color);
-        }
     }
 
     .top-content {

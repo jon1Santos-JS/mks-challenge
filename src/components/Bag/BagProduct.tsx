@@ -61,7 +61,7 @@ export default function BagProduct({ bagProduct }: BagProductContent) {
                 whileHover={{ scale: 0.84, x: '50%', y: '-50%' }}
                 initial={{ scale: 0.8, x: '50%', y: '-50%' }}
                 whileTap={{ scale: 0.76, x: '50%', y: '-50%' }}
-                className="c-button exit-button button--black"
+                className="c-button c-button--black exit-button"
                 onClick={() => bagContent.excludeProduct(bagProduct.info)}
             >
                 x

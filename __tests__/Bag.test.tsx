@@ -8,7 +8,6 @@ import {
     MatcherOptions,
 } from '@testing-library/react';
 import { BagProvider } from '@/context/BagContext';
-import '@testing-library/jest-dom';
 
 const qtProductsToList = 6;
 
